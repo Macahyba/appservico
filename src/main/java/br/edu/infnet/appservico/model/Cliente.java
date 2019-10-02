@@ -1,9 +1,14 @@
 package br.edu.infnet.appservico.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
 
 
 @Entity
@@ -15,6 +20,11 @@ public class Cliente {
 	private String nome;
 	
 	private String email;
+	
+	private Boolean ativo = true;
+	
+	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+	private List<Servico> servicos;
 	
 	public Integer getId() {
 		return id;
@@ -38,6 +48,14 @@ public class Cliente {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public Boolean getAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(Boolean ativo) {
+		this.ativo = ativo;
 	}
 	
 }

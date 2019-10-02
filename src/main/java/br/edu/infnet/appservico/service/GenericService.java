@@ -47,12 +47,12 @@ public abstract class GenericService<T> {
 		return dao.getAll();
 	}
 
-//	public GenericDao<T> getDao() {
-//		return dao;
-//	}
-//
-//	public void setDao(GenericDao<T> dao) {
-//		this.dao = dao;
-//	}
+	public GenericDao<T> getDao() {
+		return dao;
+	}
+
+	public void setDao(GenericDao<T> dao) {
+		this.dao = dao;
+	}
 
 }

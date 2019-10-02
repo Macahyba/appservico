@@ -52,6 +52,18 @@ public class ClienteController {
 		return "redirect:/cliente/list";
 	}
 	
+	@RequestMapping(value = "cliente/disable/{id}", method = RequestMethod.GET)
+	public String desativar(Model model, @PathVariable("id") Integer id) {
+		service.desativar(id);
+		return "redirect:/cliente/list";
+	}
+	
+	@RequestMapping(value = "cliente/enable/{id}", method = RequestMethod.GET)
+	public String ativar(Model model, @PathVariable("id") Integer id) {
+		service.ativar(id);
+		return "redirect:/cliente/list";
+	}
+	
 	public ClienteService getService() {
 		return service;
 	}

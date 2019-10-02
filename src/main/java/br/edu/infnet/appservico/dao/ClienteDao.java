@@ -6,5 +6,5 @@ import br.edu.infnet.appservico.model.Cliente;
 
 @Repository
 public class ClienteDao extends GenericDao<Cliente> {
-
+	
 }

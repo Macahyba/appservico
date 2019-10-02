@@ -41,7 +41,18 @@
 						</div>
 						<div class="col text-center p-1 mb-1">
 							<a href="<c:url value="/cliente/edit/${cliente.id}" />" class="btn btn-sm btn-outline-primary">Edit</a>
-						</div>						
+						</div>	
+						
+						<c:if test="${cliente.ativo == true}">
+							<div class="col text-center p-1 mb-1">
+								<a href="<c:url value="/cliente/disable/${cliente.id}" />" class="btn btn-sm btn-outline-warning">Desativar</a>
+							</div>							
+						</c:if>
+						<c:if test="${cliente.ativo != true}">
+							<div class="col text-center p-1 mb-1">
+								<a href="<c:url value="/cliente/enable/${cliente.id}" />" class="btn btn-sm btn-outline-info">Ativar</a>
+							</div>						
+						</c:if>																										
 						<div class="col text-center p-1 mb-1">
 							<a href="<c:url value="/cliente/delete/${cliente.id}" />" class="btn btn-sm btn-outline-danger">Delete</a>
 						</div>	
