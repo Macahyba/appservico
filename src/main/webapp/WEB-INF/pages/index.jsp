@@ -11,7 +11,7 @@
 	<div class="container-fluid">
 		<%@include file="header.jsp" %>
 		<div class="row">
-			<div class="col-2">
+			<div class="col-3">
 				<%@include file="navbar.jsp" %>
 			</div>
 		</div>

@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Servico {
@@ -13,8 +14,10 @@ public class Servico {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	@NotBlank
 	private String descricao;
 	
+	@NotBlank
 	private String equipamento;
 	
 	@ManyToOne

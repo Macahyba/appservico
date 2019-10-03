@@ -12,10 +12,17 @@
 	<div class="container-fluid">
 		<%@include file="../header.jsp" %>
 		<div class="row">
-			<div class="col-2">
+			<div class="col-3">
 				<%@include file="../navbar.jsp" %>
 			</div>
 			<div class="col-8">
+				<c:if test="${error != null}">
+					<div class="row">
+						<div class="col text-center p-2 mb-2 alert-danger">
+							${error}
+						</div>
+					</div>
+				</c:if>			
 				<div class="row">
 					<div class="col font-weight-bold text-center p-2 mb-2 bg-info text-white">
 						Adicionar Serviço
@@ -52,8 +59,11 @@
 			
 						</div>				
 		
-				    	<input class="btn btn-outline-success" type="submit" value="Salvar">			
-						
+						<p>
+				    		<input id="submit" class="btn btn-outline-success" type="submit" value="Salvar" />
+				    		<button id="back" class="btn btn-outline-info"onclick="goBack()">Go Back</button>
+			    		</p>
+									
 						<a href="<c:url value="/index" />" class="btn btn-link">Home</a>
 				
 						</form:form>
@@ -64,5 +74,6 @@
 	</div>
 	<script type="text/javascript" src="<c:url value="/resources/js/jquery-3.3.1.slim.min.js" />"></script>
 	<script type="text/javascript" src="<c:url value="/resources/js/bootstrap.bundle.min.js" />"></script>
+	<script type="text/javascript" src="<c:url value="/resources/js/script.js" />"></script>
 </body>
 </html>

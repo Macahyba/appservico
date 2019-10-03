@@ -1,6 +1,8 @@
 package br.edu.infnet.appservico.service;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,6 +38,12 @@ public class ClienteService extends GenericService<Cliente> {
 		cliente.setAtivo(true);
 		dao.edit(cliente);
 		
+	}
+	
+	@Transactional
+	public List<Cliente> getAtivos() {
+		
+		return dao.getAtivos();
 	}
 	
 }

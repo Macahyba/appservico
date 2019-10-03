@@ -1,8 +1,11 @@
 package br.edu.infnet.appservico.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,12 +37,20 @@ public class ServicoController {
 	
 	@RequestMapping(value = "servico/form", method = RequestMethod.GET)
 	public String form(Model model, @ModelAttribute("servico")Servico servico) {
-		model.addAttribute("listaClientes", (clienteService.getAll()));
+		model.addAttribute("listaClientes", (clienteService.getAtivos()));
 		return "servico/form";
 	}
 	
 	@RequestMapping(value = "servico/add", method = RequestMethod.POST)
-	public String add(Model model, @ModelAttribute("servico")Servico servico) {		
+	public String add(Model model, @Valid @ModelAttribute("servico")Servico servico, BindingResult result) {		
+		
+		if(result.hasErrors()) {
+			
+			model.addAttribute("listaClientes", (clienteService.getAtivos()));
+			model.addAttribute("error", "Favor preencher todos os campos!");
+			return "servico/form";
+		}
+		
 		service.save(servico);
 		return "redirect:/servico/list";
 	}
@@ -52,13 +63,20 @@ public class ServicoController {
 	
 	@RequestMapping(value = "servico/edit/{id}", method = RequestMethod.GET)
 	public String edit(Model model, @PathVariable("id") Integer id) {
-		model.addAttribute("listaClientes", (clienteService.getAll()));
+		model.addAttribute("listaClientes", (clienteService.getAtivos()));
 		model.addAttribute("servico", service.getOne(id));
 		return "servico/edit";
 	}
 	
 	@RequestMapping(value = "servico/update", method = RequestMethod.POST)
-	public String update(Model model, Servico servico) {
+	public String update(Model model, @Valid @ModelAttribute("servico") Servico servico, BindingResult result) {
+		
+		if(result.hasErrors()) {
+			
+			model.addAttribute("listaClientes", (clienteService.getAtivos()));
+			model.addAttribute("error", "Favor preencher todos os campos!");
+			return "servico/edit";
+		}
 		service.edit(servico);
 		return "redirect:/servico/list";
 	}

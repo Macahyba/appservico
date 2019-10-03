@@ -1,8 +1,11 @@
 package br.edu.infnet.appservico.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,7 +32,13 @@ public class ClienteController {
 	}
 	
 	@RequestMapping(value = "cliente/add", method = RequestMethod.POST)
-	public String add(Model model, @ModelAttribute("cliente")Cliente cliente) {
+	public String add(Model model, @Valid @ModelAttribute("cliente")Cliente cliente, BindingResult result) {
+		
+		if(result.hasErrors()) {
+			
+			model.addAttribute("error", "Favor preencher todos os campos!");
+			return "cliente/form";
+		}
 		service.save(cliente);
 		return "redirect:/cliente/list";
 	}
@@ -41,7 +50,14 @@ public class ClienteController {
 	}
 	
 	@RequestMapping(value = "cliente/update", method = RequestMethod.POST)
-	public String update(Model model, @ModelAttribute("cliente")Cliente cliente) {
+	public String update(Model model, @Valid @ModelAttribute("cliente")Cliente cliente, BindingResult result) {
+		
+		if(result.hasErrors()) {
+			
+			model.addAttribute("error", "Favor preencher todos os campos!");
+			return "cliente/edit";
+		}
+		
 		service.edit(cliente);
 		return "redirect:/cliente/list";
 	}

@@ -11,7 +11,7 @@
 	<div class="container-fluid">
 		<%@include file="../header.jsp" %>
 		<div class="row">
-			<div class="col-2">
+			<div class="col-3">
 				<%@include file="../navbar.jsp" %>
 			</div>
 			<div class="col-8">
@@ -54,7 +54,7 @@
 							</div>						
 						</c:if>																										
 						<div class="col text-center p-1 mb-1">
-							<a href="<c:url value="/cliente/delete/${cliente.id}" />" class="btn btn-sm btn-outline-danger">Delete</a>
+							<a href="<c:url value="/cliente/delete/${cliente.id}" />" onClick="areYouSure()" class="btn btn-sm btn-outline-danger">Delete</a>
 						</div>	
 					</div>
 				</c:forEach>					
@@ -64,5 +64,6 @@
 	
 	<script type="text/javascript" src="<c:url value="/resources/js/jquery-3.3.1.slim.min.js" />"></script>
 	<script type="text/javascript" src="<c:url value="/resources/js/bootstrap.bundle.min.js" />"></script>
+	<script type="text/javascript" src="<c:url value="/resources/js/script.js" />"></script>	
 </body>
 </html>
