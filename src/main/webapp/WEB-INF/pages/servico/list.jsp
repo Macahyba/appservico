@@ -21,30 +21,42 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-3 font-weight-bold text-center p-3 mb-2 bg-dark text-white">
+					<div class="col-2 font-weight-bold text-center p-3 mb-2 bg-dark text-white">
 						Cliente
 					</div>
-					<div class="col-3 font-weight-bold text-center p-3 mb-2 bg-dark text-white">
+					<div class="col-2 font-weight-bold text-center p-3 mb-2 bg-dark text-white">
 						Equipamento
 					</div>
-					<div class="col-3 font-weight-bold text-center p-3 mb-2 bg-dark text-white">
-						Descricao
+					<div class="col-2 font-weight-bold text-center p-3 mb-2 bg-dark text-white">
+						Descrição
 					</div>	
+					<div class="col-2 font-weight-bold text-center p-3 mb-2 bg-dark text-white">
+						Entrada 
+					</div>	
+					<div class="col-2 font-weight-bold text-center p-3 mb-2 bg-dark text-white">
+						Previsão
+					</div>						
 					<div class="col font-weight-bold text-center p-3 mb-2 bg-dark text-white">
 						Acões
 					</div>	
 				</div>	
 				<c:forEach var="servico" items="${listaServico}">
 					<div class="row">
-						<div class="col-3 text-center p-1 mb-1">
+						<div class="col-2 text-center p-1 mb-1">
 							${servico.getCliente().getNome()}
 						</div>
-						<div class="col-3 text-center p-1 mb-1">
+						<div class="col-2 text-center p-1 mb-1">
 							${servico.getEquipamento()}
 						</div>
-						<div class="col-3 text-center p-1 mb-1">
+						<div class="col-2 text-center p-1 mb-1">
 							${servico.getDescricao()}
 						</div>							
+						<div class="col-2 text-center p-1 mb-1 data">
+							${servico.getEntradaBr()}
+						</div>							
+						<div class="col-2 text-center p-1 mb-1" id="dataPrevisao">
+							<span>${servico.getPrevisaoBr()}</span>
+						</div>													
 						<div class="col text-center p-1 mb-1">
 							<a href="<c:url value="/servico/edit/${servico.id}" />" class="btn btn-sm btn-outline-primary">Edit</a>
 						</div>						

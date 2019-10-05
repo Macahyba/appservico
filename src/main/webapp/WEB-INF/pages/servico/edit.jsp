@@ -55,9 +55,18 @@
 								</div>
 								<form:input type="text" class="form-control" path="descricao" id="descricao" value="${servico.descricao}"/>
 				
-							</div>				
+							</div>		
+
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+							    	<span class="input-group-text">Previsão</span>
+								</div>
+								<form:input type="datetime-local" class="form-control" path="previsao" id="previsao" value="${servico.getPrevisaoHtml()}"/>
+				
+							</div>										
 							
 							<form:input type="hidden" path="id" value="${servico.id}" />
+							<form:input type="hidden" path="dataEntrada" value="${servico.getEntradaHtml()}" />
 			
 							<p>
 					    		<input id="submit" class="btn btn-outline-success" type="submit" value="Salvar" />

@@ -58,6 +58,14 @@
 							<form:input type="text" class="form-control" path="descricao" id="descricao" />
 			
 						</div>				
+
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+						    	<span class="input-group-text">Previsão</span>
+							</div>
+							<form:input type="datetime-local" class="form-control" path="previsao" id="previsao" />
+			
+						</div>	
 		
 						<p>
 				    		<input id="submit" class="btn btn-outline-success" type="submit" value="Salvar" />
